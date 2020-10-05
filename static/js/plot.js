@@ -4,6 +4,12 @@ console.log(importedData);
 
 var data = importedData;
 
+var samples = Object.values(data.samples);
+var metadata = Object.values(data.metadata);
+
+console.log(samples);
+console.log(metadata);
+
 });
 
 // have metadata:Array of objects
