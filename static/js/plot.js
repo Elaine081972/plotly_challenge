@@ -33,6 +33,41 @@ function handleSubmit() {
 }
 
 //function buildPlot()
+// building horizonal bar chart(already sorted)
+// slice first 10 objects for plotting
+sampledata = samples.slice(0, 10);
+// reverse the array due to Plotly's defaults
+sampledata = samples.reverse();
+console.log(sampledata);
+// Trace for OTU data
+samplevalue = sampledata.map(row => row.sampledata.sample_values)
+console.log(samplevalue);
+var trace1 = {
+    x: sampledata.map(row => row.sampledata.sample_values),
+    y: sampledata.map(row => row.sampledata.otu.ids),
+    text: sampledata.map(row => row.sampledata.otu_labels),
+    name: "OTU",
+    type: "bar",
+    orientaion: "h"
+
+};
+
+var chartData = [trace1];
+
+var layout = {
+    title:"Top Ten OTU's",
+    margin: {
+        l: 100,
+        r: 100,
+        t: 100,
+        b: 100
+    }
+};
+
+Plotly.newPlot("bar", chartData, layout);
+
+
+
 //function buildMetadata(){
 
 //} 
