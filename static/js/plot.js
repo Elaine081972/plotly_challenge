@@ -35,13 +35,15 @@ function handleSubmit() {
 //function buildPlot()
 // building horizonal bar chart(already sorted)
 // slice first 10 objects for plotting
-sampledata = samples.slice(0, 10);
-// reverse the array due to Plotly's defaults
-sampledata = samples.reverse();
-console.log(sampledata);
+
+//sampledata = samples.slice(0, 10); - not working...
+// reverse the array due to Plotly's defaults this just reversed the the ids order... didn't do what I wanted..
+//sampledata = samples.reverse();
+//console.log(sampledata);
 // Trace for OTU data
-samplevalue = sampledata.map(row => row.sampledata.sample_values)
-console.log(samplevalue);
+
+//samplevalue = sampledata.sample_values; - need to isolate the value pairs from the keys....
+//console.log(samplevalue);
 var trace1 = {
     x: sampledata.map(row => row.sampledata.sample_values),
     y: sampledata.map(row => row.sampledata.otu.ids),
