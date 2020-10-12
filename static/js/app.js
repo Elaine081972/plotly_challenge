@@ -78,7 +78,7 @@ function buildPlot(id) {
       width: 1000  
     };
 
-    // data variable
+    // data variable for bubble plot
     var data2 = [trace2];
     
     // bubble plot
@@ -91,7 +91,6 @@ function buildPlot(id) {
 function getMetainfo(id) {
 
   // read the json file to get the data
-  
   d3.json("data/samples.json").then((data) => {
      
     // get metadata info for demographic chart
@@ -99,13 +98,13 @@ function getMetainfo(id) {
 
     //console.log(metadata);
 
-    // filter metadata by id
+    // filter metadata by id 
     let filtermeta = metadata.filter(metadata => metadata.id.toString() === id)[0];
 
     // use d3 to select for metadata placement
     let demoInfo = d3.select("#sample-metadata");
 
-    // refresh page so demographic info change of id entered
+    // refresh so demographic info is cleared of id entered/and not added to new id info
     demoInfo.html("");
 
     // retrieve demographic data for id and append to h5 element
@@ -125,18 +124,18 @@ function optionChanged(id) {
 // create function for initial data rendering
 function init() {
   // select dropdown menu
-  let dropdown = d3.select("#selDataset");
+  let dropmenu = d3.select("#selDataset");
 
   // read the data
   d3.json("data/samples.json").then((data) => {
     //console.log(data)
 
-    // get the id data to the dropdown menu
+    // append the id data to the dropdown menu from data.names 
     data.names.forEach(function(name) {
-      dropdown.append("option").text(name).property("value");
+      dropmenu.append("option").text(name).property("value");
 
     });
-    // call the functions to display the data and the plots to the page
+    // call the functions to display the data using the first id/name (zero index) and the plots to the page
     buildPlot(data.names[0]);
     getMetainfo(data.names[0]);
   });
