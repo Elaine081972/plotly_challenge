@@ -1,5 +1,8 @@
+
+// create function to build plots - bar chart/bubble chart
 function buildPlot(id) {
 
+  // read in the data(use live server)
   d3.json("data/samples.json").then((data) => {
     //console.log(data);
 // filter sample values by id 
