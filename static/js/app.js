@@ -74,6 +74,7 @@ function buildPlot(id) {
     // layout for bubble plot
     var layout2 = {
       xaxis: {title: "OTU ID"},
+      yaxis: {title: "SAMPLE VALUES"},
       height: 600,
       width: 1000  
     };
