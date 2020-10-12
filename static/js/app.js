@@ -4,23 +4,25 @@ function buildPlot(id) {
 
   // read in the data(use live server)
   d3.json("data/samples.json").then((data) => {
+
     //console.log(data);
-// filter sample values by id 
+    // filter sample values by id 
     let samples = data.samples.filter(samples => samples.id.toString() === id)[0];
-    console.log(samples);
-    //get the top 10 
+
+    //console.log(samples);
+
+    // retrieve  the top 10 sample values
     let samplevalues = samples.sample_values.slice(0,10).reverse();
 
     // get only the top 10 OTU IDs for the plot OTU and reverse for plotting
     let OTU_top = (samples.otu_ids.slice(0, 10)).reverse();
 
-    // use map to get the OTU IDs to form for the plot
+    // use map callback function to get the OTU IDs  for the plot
     let OTU_id = OTU_top.map(d => "OTU " + d)
 
     // console.log(OTU_id)
 
     // Top 10 labels for the plot
-
     let labels = samples.otu_labels.slice(0, 10);
 
     //console.log(samplevalues)
@@ -57,7 +59,7 @@ function buildPlot(id) {
     // console.log(samples.otu_ids)
     
     // bubble chart
-
+    // trace variable for bubble chart
     var trace2 = {
       x: samples.otu_ids,
       y: samples.sample_values,
@@ -70,17 +72,17 @@ function buildPlot(id) {
     };
 
     // layout for bubble plot
-    var layout_b = {
+    var layout2 = {
       xaxis: {title: "OTU Id"},
       height: 600,
       width: 1000  
     };
 
     // data variable
-    var data1 = [trace2];
+    var data2 = [trace2];
     
     // bubble plot
-    Plotly.newPlot("bubble", data1, layout_b);
+    Plotly.newPlot("bubble", data2, layout2);
 
   });
 
