@@ -104,7 +104,7 @@ function getMetainfo(id) {
     // use d3 to select for metadata placement
     let demoInfo = d3.select("#sample-metadata");
 
-    // refresh so demographic info is cleared of id entered/and not added to new id info
+    // clear so demographic info  of id entered/and not added to new id info added
     demoInfo.html("");
 
     // retrieve demographic data for id and append to h5 element
